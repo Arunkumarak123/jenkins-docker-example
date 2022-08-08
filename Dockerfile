@@ -1,4 +1,5 @@
-FROM openjdk
-COPY target/*.jar /
+FROM centos
+RUN yum install httpd -y
+COPY index.html /var/www/html/
+CMD ["/usr/sbin/httpd","-D", "FOREGROUND"]
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
